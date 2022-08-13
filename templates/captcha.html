@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>CAPTCHA</title>
+</head>
+<body>
+<form action="/api/check_token" method="post">
+    <script src="/static/js/captcha.js"></script>
+    <input id="captcha-token" type="hidden" name="s-captcha-token">
+    <div id="captcha-window">
+        <div style="position: fixed; top: 30%; left: 40%; width: 300px; height: 300px; border: 2px solid #000000" id="captcha_div">
+            <p style="font-size: 16; position: absolute; top: -15px">请按<b style="color: #FF0000">语序</b>依次点击图中的汉字</p>
+            <span style="font-size: 16; position: absolute; top: 0px; left: 220px">  已点击:<span id="clicked">0</span>/<span id="total">10</span></span>
+            <button style="font-size: 16; position: absolute; top: 25px; left: 0px" onclick="clear_all();" type="button">清除全部标记</button>
+            <button style="font-size: 16; position: absolute; top: 25px; left: 100px" onclick="get_captcha_img();" type="button">换一个</button>
+            <img src="/static/test.png" width="300" height="225" style="display:none" onclick="choose();" id="captcha_img">
+            <span id="loading-tips" style="position: absolute; top: 50px; left: 0px;">验证码加载中</span>
+            <button style="font-size: 16; position: absolute; top: 275px; left: 250px" id="submit_button" onclick="submit_captcha();" type="button">确定</button>
+            <span id="captcha_result" style="font-size: 16; position: absolute; top: 275px; left: 0px; color: #AA0000"></span>
+            <img src="/api/number?num=1" id="captcha-number-1" style="display: none" class="captcha-numbers">
+            <img src="/api/number?num=2" id="captcha-number-2" style="display: none" class="captcha-numbers">
+            <img src="/api/number?num=3" id="captcha-number-3" style="display: none" class="captcha-numbers">
+            <img src="/api/number?num=4" id="captcha-number-4" style="display: none" class="captcha-numbers">
+            <img src="/api/number?num=5" id="captcha-number-5" style="display: none" class="captcha-numbers">
+            <img src="/api/number?num=6" id="captcha-number-6" style="display: none" class="captcha-numbers">
+            <img src="/api/number?num=7" id="captcha-number-7" style="display: none" class="captcha-numbers">
+            <img src="/api/number?num=8" id="captcha-number-8" style="display: none" class="captcha-numbers">
+            <img src="/api/number?num=9" id="captcha-number-9" style="display: none" class="captcha-numbers">
+            <img src="/api/number?num=10" id="captcha-number-10" style="display: none" class="captcha-numbers">
+            <span id="captcha-id" style="display:none"></span>
+            <span id="clicked_pos" style="display:none"></span>
+        </div>
+    </div>
+    <script>get_captcha_img();</script>
+    <input type="submit" value="提交">
+</form>
+</body>
+</html>
